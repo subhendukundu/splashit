@@ -1,0 +1,38 @@
+.sort-form {
+    background: #E5E5E5;
+    border-radius: 20px;
+    margin: 30px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sort-form label {
+    color: #B5AEAE;
+    font-size: 18px;
+}
+
+.sort-option-label input {
+    margin-right: 10px;
+}
+
+.sort-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.sort-group.more {
+    display: grid;
+    grid-gap: .1rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+@media (max-width: 600px) {
+    .sort-option-label {
+        margin-bottom: 10px;
+    }
+    
+    .sort-group.more {
+        display: flex;
+    }
+}
