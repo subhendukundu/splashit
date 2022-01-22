@@ -72,7 +72,7 @@ export default function ImageSearch () {
       <SearchAndFilter ref={searchInputRef} onSearchImages={onSearchImages} />
       {!online && <span className="network-status">
         📶 Looks like you are offline!</span>}
-      <PhotoGrid loading={loading} error={error} openModal={openModal} pics={pics} />
+      {online && <PhotoGrid loading={loading} error={error} openModal={openModal} pics={pics} />}
       <div ref={infiniteLoader} />
     </>
   )
