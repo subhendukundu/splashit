@@ -149,6 +149,19 @@
   justify-content: flex-end;
 }
 
+.network-status {
+  margin-left: 30px;
+  margin-top: 10px;
+  color: rgba(188, 74, 60, 0.7);
+  display: flex;
+  align-items: center;
+}
+
+.offline-image {
+  height: 15px;
+  margin-right: 10px;
+}
+
 @keyframes animate {
   from {
     transform: scale(0.5);

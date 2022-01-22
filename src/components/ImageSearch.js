@@ -11,8 +11,10 @@ import SearchAndFilter from './SearchAndFilter'
 import { Context } from '../store'
 import useUnsplash from '../helpers/unsplash'
 import PhotoGrid from './PhotoGrid'
+import { useCheckNetwork } from '../helpers/useCheckNetwork'
 
 export default function ImageSearch () {
+  const online = useCheckNetwork()
   const searchInputRef = useRef()
   const infiniteLoader = useRef(null)
   const [query, setQuery] = useState('star-wars')
@@ -68,6 +70,7 @@ export default function ImageSearch () {
     <>
       {modalData && <Modal setModalData={setModalData} modalData={modalData} />}
       <SearchAndFilter ref={searchInputRef} onSearchImages={onSearchImages} />
+      {!online && <span className="network-status"><img className="offline-image" src="https://img.icons8.com/color/48/000000/offline.png"/> Looks like you are offline!</span>}
       <PhotoGrid loading={loading} error={error} openModal={openModal} pics={pics} />
       <div ref={infiniteLoader} />
     </>
