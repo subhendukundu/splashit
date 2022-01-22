@@ -10,6 +10,7 @@ import Modal from './Modal'
 import SearchAndFilter from './SearchAndFilter'
 import { Context } from '../store'
 import useUnsplash from '../helpers/unsplash'
+import PhotoGrid from './PhotoGrid'
 
 export default function ImageSearch () {
   const searchInputRef = useRef()
@@ -63,39 +64,12 @@ export default function ImageSearch () {
     if (infiniteLoader.current) observer.observe(infiniteLoader.current)
   }, [handleObserver])
 
-  const photosGrid = pics.map((pic) => (
-    <li className="card" key={pic.id}>
-      <button onClick={() => openModal(pic)}>
-        <img
-          className="card-image"
-          alt={pic.alt_description}
-          src={pic.urls.thumb}
-          width="50%"
-          height="50%"
-        />
-      </button>
-    </li>
-  ))
-
   return (
     <>
       {modalData && <Modal setModalData={setModalData} modalData={modalData} />}
       <SearchAndFilter ref={searchInputRef} onSearchImages={onSearchImages} />
-      <ul className="photo-grid">
-        {pics.length > 0
-          ? (
-              photosGrid
-            )
-          : loading
-            ? (
-          <p>Loading...</p>
-              )
-            : (
-          <span>No results found!</span>
-              )}
-        {error && <p>Error!</p>}
-        <div ref={infiniteLoader} />
-      </ul>
+      <PhotoGrid loading={loading} error={error} openModal={openModal} pics={pics} />
+      <div ref={infiniteLoader} />
     </>
   )
 }

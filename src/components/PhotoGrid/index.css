@@ -1,0 +1,36 @@
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin: 30px;
+  padding-inline-start: 0;
+}
+
+.photo-grid li {
+  flex: 0 0 20%;
+  padding: 20px 0;
+  background: none;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-grid img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.photo-grid button {
+  border: none;
+  background: none;
+}
+
+@media (max-width: 600px) {
+  .photo-grid {
+    margin: 10px;
+  }
+}
